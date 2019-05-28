@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <title>Nueva Consulta</title>
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+    <link rel = "stylesheet"
+          href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel = "stylesheet"
+          href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type = "text/javascript"
+            src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+    </script>
+</head>
+<body class="container">
+<form action="/registerConsulta" th:object="${consulta}"  method="POST" >
+    <input th:field="${consulta.id}" hidden>
+    <b>Tipo:</b>
+    <select name="tipo" th:field="*{tipo}">
+        <option value = "Grave">Grave</option>
+        <option value = "Media">Media</option>
+        <option value = "Leve" >Leve</option>
+    </select>
+    <b>Fecha:</b><input type="text" th:field="*{fecha}" placeholder="ddmmaaaa">
+    <b>Descripcion:</b><input type="text" th:field="*{descripcion}">
+    <b>Doctor:</b>
+    <select name="doctor" th:field="*{doctor}">
+        <option th:each="doctor: ${doctors}" th:value="${doctor.id}"  th:text="${doctor.nombreDoc}"></option>
+    </select>
+    <b>Paciente:</b>
+    <select name="user" th:field="*{user}">
+        <option th:each="user: ${users}" th:value="${user.id}"  th:text="${user.name}"></option>
+    </select>
+    <input type="submit" name="guardar" value="Guardar">
+</form>
+</body>
+</html>

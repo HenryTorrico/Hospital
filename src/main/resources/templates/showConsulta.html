@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultas</title>
+    <link href="css/homeStyle.css" rel="stylesheet">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body class="container">
+<h1 class="title">CONSULTA</h1>
+<b>Tipo:</b><span th:text="${consulta.tipo}"></span><br>
+<b>Fecha:</b><span th:text="${consulta.fecha}"></span><br>
+<b>Usuario:</b><span th:text="${consulta.user.name}"></span>
+<b>Doctor:</b><span th:text="${consulta.doctor.nombreDoc}"></span>
+<b>Descripcion:</b><span th:text="${consulta.descripcion}"></span><br>
+
+
+</body>
+</html>
