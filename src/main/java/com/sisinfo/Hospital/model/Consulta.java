@@ -15,7 +15,7 @@ public class Consulta {
     public String tipo;
 
     @Column(name = "fecha")
-    public Integer fecha;
+    public String fecha;
 
     @Column(name = "descripcion")
     public String descripcion;
@@ -45,11 +45,11 @@ public class Consulta {
         this.descripcion = descripcion;
     }
 
-    public Integer getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Integer fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

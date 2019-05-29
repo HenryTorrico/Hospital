@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 </head>
 <body class="container row">
 <h1 class="title">DOCTOR</h1>
@@ -17,5 +18,34 @@
     <b>Nombre Doctor:</b><span th:text="${doctor.nombreDoc}"></span> <br>
     <b>Especialidad:</b><span th:text="${doctor.especialidadDoc}"></span>
 </div>
+<div class="well" th:if="${!consultas.isEmpty()}" >
+    <table id="myTable" border="1">
+        <tr>
+            <th>Tipo</th>
+            <th>Fecha</th>
+            <th>Descripcion</th>
+            <th>Paciente</th>
+            <th>Ver Detalle de Consulta</th>
+        </tr>
+        <tr th:each="consulta: ${consultas}">
+            <td th:text="${consulta.tipo}">
+            </td>
+            <td th:text="${consulta.fecha}">
+            </td>
+            <td th:text="${consulta.descripcion}">
+            </td>
+            <td th:text="${consulta.user.name}">
+            </td>
+            <td>
+                <a class="waves-effect waves-light btn-small blue" th:href="${ '/consulta/' + consulta.id}">Ver
+                </a>
+            </td>
+
+        </tr>
+
+
+    </table>
+</div>
+
 </body>
 </html>

@@ -17,5 +17,35 @@
     <b>name:</b><span th:text="${user.name}"></span> <br>
     <b>email:</b><span th:text="${user.email}"></span>
 </div>
+
+</div>
+<div class="well" th:if="${!consultas.isEmpty()}" >
+    <table border="1">
+        <tr>
+            <th>Tipo</th>
+            <th>Fecha</th>
+            <th>Descripcion</th>
+            <th>Doctor</th>
+            <th>Ver Detalle de Consulta</th>
+        </tr>
+        <tr th:each="consulta: ${consultas}">
+            <td th:text="${consulta.tipo}">
+            </td>
+            <td th:text="${consulta.fecha}">
+            </td>
+            <td th:text="${consulta.descripcion}">
+            </td>
+            <td th:text="${consulta.doctor.nombreDoc}">
+            </td>
+            <td>
+                <a class="waves-effect waves-light btn-small blue" th:href="${ '/consulta/' + consulta.id}">Ver
+                </a>
+            </td>
+
+        </tr>
+
+
+    </table>
+</div>
 </body>
 </html>

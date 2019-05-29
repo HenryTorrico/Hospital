@@ -1,7 +1,9 @@
 package com.sisinfo.Hospital.controller;
 
 
+import com.sisinfo.Hospital.model.Consulta;
 import com.sisinfo.Hospital.model.User;
+import com.sisinfo.Hospital.service.ConsultaService;
 import com.sisinfo.Hospital.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,12 +16,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ConsultaService consultaService;
 
     @RequestMapping(value = "/user/new", method = RequestMethod.GET)
     public String newUser(Model model) {
@@ -52,7 +58,9 @@ public class UserController {
     public String showUser(@PathVariable Integer id, Model model) {
 
         User user = userService.findUser(id);
+        Set<Consulta> consultas = user.getConsultas();
         model.addAttribute("user", user);
+        model.addAttribute("consultas",consultas);
         return "showUser";
     }
 
